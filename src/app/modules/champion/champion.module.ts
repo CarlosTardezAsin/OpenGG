@@ -17,6 +17,10 @@ import { ChampionListComponent } from './champion-list/champion-list.component';
     CommonModule,
     HttpClientModule
   ],
+  exports: [
+    ChampionListComponent,
+    ChampionComponent
+  ],
   providers: [
     ChampionService
   ]

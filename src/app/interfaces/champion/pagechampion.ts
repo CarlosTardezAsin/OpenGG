@@ -1,8 +1,8 @@
-import { DataChampion } from './data';
+import { Champion } from './champion';
 
 export interface PageChampion {
   type: string;
   format: string;
   version: string;
-  data: DataChampion;
+  data: { [key: string]: Champion };
 }

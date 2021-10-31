@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ChampionService } from '../service/champion.service';
 
 @Component({
   selector: 'app-champion-list',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChampionListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private championSv: ChampionService) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    console.log(await this.championSv.getAll());
   }
 
 }
