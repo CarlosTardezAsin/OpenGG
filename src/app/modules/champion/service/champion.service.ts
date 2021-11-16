@@ -10,10 +10,19 @@ export class ChampionService {
 
   constructor(private http: HttpClient) { }
 
-  async getAll(): Promise<{ [key: string]: Champion }> {
-    const url = 'https://ddragon.leagueoflegends.com/cdn/11.21.1/data/en_US/champion.json';
-    const page = await this.http.get<PageChampion>(url).toPromise();
+  async getAll(): Promise<Champion[]> {
+    const url: string = 'https://ddragon.leagueoflegends.com/cdn/11.21.1/data/en_US/champion.json';
+    const pageChamp: PageChampion = await this.http.get<PageChampion>(url).toPromise();
 
-    return page.data;
+    return Object.values(pageChamp.data);
   }
+
+  async getOne(champName: string): Promise<Champion> {
+    const url: string = 'https://ddragon.leagueoflegends.com/cdn/11.23.1/data/en_US/champion/' + champName + '.json';
+    const pageChamp: PageChampion = await this.http.get<PageChampion>(url).toPromise();
+    const champ: Champion = Object.values(pageChamp.data)[0];
+
+    return champ;
+  }
+
 }

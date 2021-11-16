@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ChampionService } from '../service/champion.service';
 
 @Component({
   selector: 'app-champion',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChampionComponent implements OnInit {
 
-  constructor() { }
+  constructor(private championSv: ChampionService) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    const champ = await this.championSv.getOne('Aatrox');
+
+    console.log(champ);
   }
 
 }

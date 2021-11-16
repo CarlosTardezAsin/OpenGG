@@ -10,8 +10,9 @@ export class ChampionListComponent implements OnInit {
 
   constructor(private championSv: ChampionService) { }
 
-  async ngOnInit() {
-    console.log(await this.championSv.getAll());
-  }
+  async ngOnInit(): Promise<void> {
+    const champs = await this.championSv.getAll();
 
+    console.log(champs.map(champ => champ.id));
+  }
 }
