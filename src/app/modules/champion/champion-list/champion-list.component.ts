@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ChampionList } from 'src/app/interfaces/champion/champion';
 import { ChampionService } from '../service/champion.service';
 
 @Component({
@@ -8,11 +9,13 @@ import { ChampionService } from '../service/champion.service';
 })
 export class ChampionListComponent implements OnInit {
 
+  champs!: ChampionList[];
+
   constructor(private championSv: ChampionService) { }
 
   async ngOnInit(): Promise<void> {
-    const champs = await this.championSv.getAll();
+    this.champs = await this.championSv.getAll();
 
-    console.log(champs.map(champ => champ.id));
+    console.log(this.champs);
   }
 }

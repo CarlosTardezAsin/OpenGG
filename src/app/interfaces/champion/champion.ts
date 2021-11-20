@@ -21,5 +21,9 @@ export interface Champion {
   stats: { [key: string]: number };
   spells: Spell[];
   passive: Passive;
-  recommended: any[];
 }
+
+export type ChampionList = Omit<
+  Champion,
+  'skins' | 'lore' | 'allytips' | 'enemytips' | 'partytype' | 'spells' | 'passive'
+>;
